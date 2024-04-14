@@ -8,13 +8,16 @@ use App\Core\Domain\CQRS\Handler;
 use App\Core\Domain\Model\ValueObject\Email;
 use App\Security\Domain\Model\Factory\RegisterUserFactory;
 use App\Security\Domain\Model\ValueObject\Password;
+use App\Security\Domain\Model\ValueObject\PlainPassword;
+use App\Security\Domain\Port\Hasher\PasswordHasherInterface;
 use App\Security\Domain\Port\Repository\UserRepository;
 
 final readonly class SignUp implements Handler
 {
     public function __construct(
-        private UserRepository      $userRepository,
-        private RegisterUserFactory $registerUserFactory
+        private UserRepository          $userRepository,
+        private RegisterUserFactory     $registerUserFactory,
+        private PasswordHasherInterface $passwordHasher,
     )
     {
     }
@@ -23,7 +26,7 @@ final readonly class SignUp implements Handler
     {
         $user = $this->registerUserFactory
             ->withEmail(Email::create($newUserCommand->email))
-            ->withPassword(Password::create($newUserCommand->password))
+            ->withPassword($this->passwordHasher->hash(PlainPassword::create($newUserCommand->password)))
             ->build();
 
         $this->userRepository->register($user);

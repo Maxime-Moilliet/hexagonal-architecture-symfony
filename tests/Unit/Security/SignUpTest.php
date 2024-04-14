@@ -12,6 +12,7 @@ use App\Security\Domain\UseCase\SignUp\SignUp;
 use App\Security\Domain\Validation\Validator\UniqueEmailValidator;
 use Tests\FakerTrait;
 use Tests\Fixtures\Core\Doctrine\Repository\FakeUserRepository;
+use Tests\Fixtures\Security\Hasher\FakePasswordHasher;
 use Tests\Unit\UseCaseTestCase;
 
 final class SignUpTest extends UseCaseTestCase
@@ -29,11 +30,14 @@ final class SignUpTest extends UseCaseTestCase
         ]);
 
         $registerUserFactory = new RegisterUserFactory();
+        $fakePasswordHasher = new FakePasswordHasher();
+
 
         $this->setUseCase(
             new SignUp(
                 $this->fakeUserRepository,
-                $registerUserFactory
+                $registerUserFactory,
+                $fakePasswordHasher,
             )
         );
     }
@@ -49,7 +53,7 @@ final class SignUpTest extends UseCaseTestCase
         $user = $this->fakeUserRepository->findByEmail(Email::create($newUser->email));
 
         self::assertInstanceOf(User::class, $user);
-        self::assertSame('4234df00-45dd-49a4-b303-a75dbf8b10d8!', $user->password()->value());
+        self::assertSame('hashed_password', $user->password()->value());
     }
 
     /**

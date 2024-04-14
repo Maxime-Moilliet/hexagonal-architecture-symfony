@@ -21,8 +21,7 @@ final class UserFixtures extends Fixture
     private static function createNewUser(
         string $email = 'admin+1@email.com',
         string $password = 'Password123!'
-    ): User
-    {
+    ): User {
         $user = new User();
         $user->id = new Ulid();
         $user->email = $email;
