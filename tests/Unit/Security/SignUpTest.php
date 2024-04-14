@@ -9,6 +9,7 @@ use App\Security\Domain\Model\Entity\User;
 use App\Security\Domain\Model\Factory\RegisterUserFactory;
 use App\Security\Domain\UseCase\SignUp\NewUserCommand;
 use App\Security\Domain\UseCase\SignUp\SignUp;
+use App\Security\Domain\Validation\Validator\UniqueEmailValidator;
 use Tests\FakerTrait;
 use Tests\Fixtures\Core\Doctrine\Repository\FakeUserRepository;
 use Tests\Unit\UseCaseTestCase;
@@ -21,9 +22,12 @@ final class SignUpTest extends UseCaseTestCase
 
     protected function setUp(): void
     {
-        $this->setValidator([]);
-
         $this->fakeUserRepository = new FakeUserRepository();
+
+        $this->setValidator([
+            UniqueEmailValidator::class => new UniqueEmailValidator($this->fakeUserRepository),
+        ]);
+
         $registerUserFactory = new RegisterUserFactory();
 
         $this->setUseCase(

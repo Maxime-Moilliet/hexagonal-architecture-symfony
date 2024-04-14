@@ -73,6 +73,17 @@ final class SignUpTest extends ApiTestCase
             ],
         ];
 
+        yield 'email non unique' => [
+            'email' => 'admin+1@email.com',
+            'password' => self::faker()->password(20),
+            'expectedResponse' => [
+                [
+                    'message' => 'Cette adresse email est déjà utilisée.',
+                    'propertyPath' => 'email',
+                ],
+            ],
+        ];
+
         yield 'password strength too low' => [
             'email' => 'user@email.com',
             'password' => 'fail',
