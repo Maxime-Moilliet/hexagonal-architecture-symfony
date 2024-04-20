@@ -20,26 +20,26 @@ function tests(): void
 function testsWithCoverage(): void
 {
     io()->title('Run all tests with coverage');
-    run('php vendor/bin/phpunit');
+    run('php vendor/bin/simple-phpunit');
 }
 
 #[AsTask(name: 'unit', description: 'Run unit tests', aliases: ['unit'])]
 function unitTests(): void
 {
     io()->title('Run unit tests');
-    run('php vendor/bin/phpunit --testdox --testsuite=unit --no-coverage', ['XDEBUG_MODE' => 'off']);
+    run('php vendor/bin/simple-phpunit --testdox --testsuite=unit --no-coverage', ['XDEBUG_MODE' => 'off']);
 }
 
 #[AsTask(name: 'component', description: 'Run component tests', aliases: ['component'])]
 function componentTests(): void
 {
     io()->title('Run component tests');
-    run('php vendor/bin/phpunit --testdox --testsuite=component --no-coverage', ['XDEBUG_MODE' => 'off']);
+    run('php vendor/bin/simple-phpunit --testdox --testsuite=component --no-coverage', ['XDEBUG_MODE' => 'off']);
 }
 
 #[AsTask(name: 'integration', description: 'Run integration tests', aliases: ['integration'])]
 function integrationTests(): void
 {
     io()->title('Run integration tests');
-    run('php vendor/bin/phpunit --testdox --testsuite=integration --no-coverage', ['XDEBUG_MODE' => 'off']);
+    run('php vendor/bin/simple-phpunit --testdox --testsuite=integration --no-coverage', ['XDEBUG_MODE' => 'off']);
 }
