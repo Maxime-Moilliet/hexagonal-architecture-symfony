@@ -13,7 +13,7 @@ jobs:
           - 3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     env:
-      DATABASE_URL: "mysql://root@mysql:3306/mydb"
+      DATABASE_URL: "mysql://root:@127.0.0.1:3306/hexagonal-architecture-symfony?serverVersion=10.11.2&charset=utf8mb4"
     strategy:
       fail-fast: false
       matrix:
