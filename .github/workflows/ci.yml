@@ -28,6 +28,11 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: mbstring, xml, ctype, iconv, intl
           tools: castor
+      - name: Wait for MySQL
+        run: |
+          wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
+          chmod +x wait-for-it.sh
+          ./wait-for-it.sh mysql:3306 --timeout=60
       - name: Get composer cache directory
         id: composer-cache
         run: echo "::set-output name=dir::$(composer config cache-files-dir)"
