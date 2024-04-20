@@ -19,9 +19,9 @@ function prepare(#[AsOption] ?string $env = 'dev'): void
 function dbSchema(#[AsOption] ?string $env = 'dev'): void
 {
     io()->title('Create database schema');
-    run('php bin/console doctrine:database:drop --if-exists -f', ['XDEBUG_MODE' => 'off', 'APP_ENV' => $env]);
-    run('php bin/console doctrine:database:create', ['XDEBUG_MODE' => 'off', 'APP_ENV' => $env]);
-    run('php bin/console doctrine:migration:migrate --no-interaction --allow-no-migration', ['XDEBUG_MODE' => 'off', 'APP_ENV' => $env]);
+    run('symfony php bin/console doctrine:database:drop --if-exists -f', ['XDEBUG_MODE' => 'off', 'APP_ENV' => $env]);
+    run('symfony php bin/console doctrine:database:create', ['XDEBUG_MODE' => 'off', 'APP_ENV' => $env]);
+    run('symfony php bin/console doctrine:migration:migrate --no-interaction --allow-no-migration', ['XDEBUG_MODE' => 'off', 'APP_ENV' => $env]);
 }
 
 #[AsTask(name: 'migration', namespace: 'database', description: 'Create new migration', aliases: ['migration'])]
