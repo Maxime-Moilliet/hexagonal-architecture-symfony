@@ -20,7 +20,7 @@ function depsUpdate(): void
 function depsInstall(): void
 {
     io()->title('Install dependencies');
-    run('composer install', ['XDEBUG_MODE' => 'off']);
+    run('composer install -v', ['XDEBUG_MODE' => 'off']);
 }
 
 #[AsTask(name: 'require', namespace: 'composer', description: 'Install new dependencies', aliases: ['req'])]
