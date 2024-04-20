@@ -25,7 +25,7 @@ class UniqueEmailValidator extends ConstraintValidator
             return;
         }
 
-        if (!$this->userRepository->isAlreadyUsed((string)$value)) {
+        if (!$this->userRepository->isAlreadyUsed((string) $value)) {
             return;
         }
 

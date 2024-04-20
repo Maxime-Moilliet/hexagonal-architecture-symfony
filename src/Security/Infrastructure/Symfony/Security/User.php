@@ -18,7 +18,6 @@ final readonly class User implements PasswordAuthenticatedUserInterface
         return new self($user);
     }
 
-
     public function getPassword(): ?string
     {
         return $this->user->password()->value();

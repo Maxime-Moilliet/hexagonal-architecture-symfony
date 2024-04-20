@@ -20,10 +20,9 @@ use Doctrine\Persistence\ManagerRegistry;
 final class UserDoctrineRepository extends ServiceEntityRepository implements UserRepository
 {
     public function __construct(
-        ManagerRegistry                    $registry,
+        ManagerRegistry $registry,
         private readonly CreateUserFactory $createUserFactory
-    )
-    {
+    ) {
         parent::__construct($registry, DoctrineUser::class);
     }
 

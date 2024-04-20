@@ -7,7 +7,6 @@ namespace App\Security\Domain\Model\Factory;
 use App\Core\Domain\Model\Factory\Factory;
 use App\Core\Domain\Model\ValueObject\Email;
 use App\Core\Domain\Model\ValueObject\Identifier;
-use App\Security\Domain\Model\Entity\Status;
 use App\Security\Domain\Model\Entity\User;
 use App\Security\Domain\Model\ValueObject\Password;
 

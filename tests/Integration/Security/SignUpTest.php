@@ -32,9 +32,8 @@ final class SignUpTest extends ApiTestCase
     public function testShouldReturnUnprocessableEntity(
         string $email,
         string $password,
-        array  $expectedResponse
-    ): void
-    {
+        array $expectedResponse
+    ): void {
         self::createClient();
 
         $this->post('/api/security/sign-up', [

@@ -32,7 +32,6 @@ final class SignUpTest extends UseCaseTestCase
         $registerUserFactory = new RegisterUserFactory();
         $fakePasswordHasher = new FakePasswordHasher();
 
-
         $this->setUseCase(
             new SignUp(
                 $this->fakeUserRepository,

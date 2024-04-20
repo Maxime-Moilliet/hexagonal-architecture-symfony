@@ -22,7 +22,7 @@ final class FakeUserRepository implements UserRepository
 
     public function isAlreadyUsed(Email|string $email): bool
     {
-        return isset($this->users[(string)$email]);
+        return isset($this->users[(string) $email]);
     }
 
     public function findByEmail(Email $email): ?User

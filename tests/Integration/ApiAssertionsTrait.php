@@ -19,6 +19,6 @@ trait ApiAssertionsTrait
         /** @var Response $response */
         $response = $client->getResponse();
 
-        self::assertJsonStringEqualsJsonString(json_encode($data), (string)$response->getContent());
+        self::assertJsonStringEqualsJsonString((string) json_encode($data), (string) $response->getContent());
     }
 }

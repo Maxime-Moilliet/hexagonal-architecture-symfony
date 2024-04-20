@@ -12,10 +12,9 @@ final readonly class User
 {
     private function __construct(
         private Identifier $id,
-        private Email      $email,
-        private Password   $password,
-    )
-    {
+        private Email $email,
+        private Password $password,
+    ) {
     }
 
     public static function register(Email $email, Password $password): self

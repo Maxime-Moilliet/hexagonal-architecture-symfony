@@ -34,7 +34,7 @@ abstract class ApiTestCase extends WebTestCase
                 'Content-Type' => 'application/json',
                 'Accept' => 'application/json',
             ],
-            json_encode($body)
+            (string) json_encode($body)
         );
 
         /** @var Response $response */
