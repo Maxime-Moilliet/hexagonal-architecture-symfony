@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Tests\Component\Hasher;
 
 use App\Core\Domain\Model\ValueObject\Email;
+use App\Core\Domain\Model\ValueObject\Identifier;
 use App\Security\Domain\Model\Entity\User;
 use App\Security\Domain\Model\ValueObject\PlainPassword;
 use App\Security\Infrastructure\Hasher\PasswordHasher;
@@ -32,7 +33,8 @@ final class PasswordHasherTest extends KernelTestCase
         self::assertTrue(
             $passwordHasher->verify(
                 $plainPassword,
-                User::register(
+                new User(
+                    Identifier::generate(),
                     Email::create('user@email.com'),
                     $passwordHasher->hash($plainPassword)
                 )

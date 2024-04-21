@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Infrastructure\Doctrine\DataFixtures;
+namespace App\Security\Infrastructure\Doctrine\DataFixtures;
 
-use App\Core\Infrastructure\Doctrine\Entity\User;
+use App\Security\Infrastructure\Doctrine\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Uid\Ulid;
@@ -18,10 +18,8 @@ final class UserFixtures extends Fixture
         $manager->flush();
     }
 
-    private static function createNewUser(
-        string $email = 'admin+1@email.com',
-        string $password = 'Password123!'
-    ): User {
+    private static function createNewUser(string $email = 'admin+1@email.com', string $password = 'Password123!'): User
+    {
         $user = new User();
         $user->id = new Ulid();
         $user->email = $email;

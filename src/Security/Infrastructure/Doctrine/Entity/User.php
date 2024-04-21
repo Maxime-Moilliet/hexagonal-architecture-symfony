@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Core\Infrastructure\Doctrine\Entity;
+namespace App\Security\Infrastructure\Doctrine\Entity;
 
 use App\Security\Domain\Model\Entity\User as SecurityUser;
 use Doctrine\DBAL\Types\Types;

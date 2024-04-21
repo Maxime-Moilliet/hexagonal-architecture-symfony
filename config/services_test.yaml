@@ -1,22 +1,3 @@
-parameters:
-
 services:
-  _defaults:
-    autowire: true
-    autoconfigure: true
-  _instanceof:
-    App\Core\Domain\CQRS\Handler:
-      tags: [ 'messenger.message_handler' ]
-
-  App\:
-    resource: '../src/'
-    exclude:
-      - '../src/Core/Domain/Model/ValueObject/'
-      - '../src/Core/Infrastructure/Symfony/Kernel.php'
-      - '../src/Core/Infrastructure/Doctrine/Entity/'
-      - '../src/Security/Domain/Model/Entity/'
-      - '../src/Security/Domain/Model/ValueObject/'
-      - '../src/Security/Infrastructure/Hasher/'
-
   Tests\Fixtures\:
     resource: '../tests/Fixtures/'

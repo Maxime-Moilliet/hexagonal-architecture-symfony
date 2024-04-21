@@ -29,13 +29,11 @@ final class SignUpTest extends UseCaseTestCase
             UniqueEmailValidator::class => new UniqueEmailValidator($this->fakeUserRepository),
         ]);
 
-        $registerUserFactory = new RegisterUserFactory();
         $fakePasswordHasher = new FakePasswordHasher();
 
         $this->setUseCase(
             new SignUp(
                 $this->fakeUserRepository,
-                $registerUserFactory,
                 $fakePasswordHasher,
             )
         );
