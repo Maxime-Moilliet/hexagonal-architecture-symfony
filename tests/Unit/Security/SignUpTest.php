@@ -6,7 +6,6 @@ namespace Tests\Unit\Security;
 
 use App\Core\Domain\Model\ValueObject\Email;
 use App\Security\Domain\Model\Entity\User;
-use App\Security\Domain\Model\Factory\RegisterUserFactory;
 use App\Security\Domain\UseCase\SignUp\NewUserCommand;
 use App\Security\Domain\UseCase\SignUp\SignUp;
 use App\Security\Domain\Validation\Validator\UniqueEmailValidator;
@@ -29,13 +28,11 @@ final class SignUpTest extends UseCaseTestCase
             UniqueEmailValidator::class => new UniqueEmailValidator($this->fakeUserRepository),
         ]);
 
-        $registerUserFactory = new RegisterUserFactory();
         $fakePasswordHasher = new FakePasswordHasher();
 
         $this->setUseCase(
             new SignUp(
                 $this->fakeUserRepository,
-                $registerUserFactory,
                 $fakePasswordHasher,
             )
         );

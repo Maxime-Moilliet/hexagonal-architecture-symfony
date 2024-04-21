@@ -13,6 +13,6 @@ services:
     exclude:
       - '../src/Core/Domain/Model/ValueObject/'
       - '../src/Core/Infrastructure/Symfony/Kernel.php'
-      - '../src/Core/Infrastructure/Doctrine/Entity/'
       - '../src/Security/Domain/Model/Entity/'
       - '../src/Security/Domain/Model/ValueObject/'
+      - '../src/Security/Infrastructure/Doctrine/Entity/'

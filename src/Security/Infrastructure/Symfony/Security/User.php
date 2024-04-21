@@ -9,16 +9,11 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 final readonly class User implements PasswordAuthenticatedUserInterface
 {
-    private function __construct(private DomainUser $user)
+    public function __construct(private DomainUser $user)
     {
     }
 
-    public static function create(DomainUser $user): self
-    {
-        return new self($user);
-    }
-
-    public function getPassword(): ?string
+    public function getPassword(): string
     {
         return $this->user->password()->value();
     }
