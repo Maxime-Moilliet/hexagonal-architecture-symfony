@@ -6,7 +6,6 @@ namespace Tests\Unit\Security;
 
 use App\Core\Domain\Model\ValueObject\Email;
 use App\Security\Domain\Model\Entity\User;
-use App\Security\Domain\Model\Factory\RegisterUserFactory;
 use App\Security\Domain\UseCase\SignUp\NewUserCommand;
 use App\Security\Domain\UseCase\SignUp\SignUp;
 use App\Security\Domain\Validation\Validator\UniqueEmailValidator;

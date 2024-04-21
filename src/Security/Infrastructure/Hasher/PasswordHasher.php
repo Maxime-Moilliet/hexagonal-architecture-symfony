@@ -22,7 +22,7 @@ final readonly class PasswordHasher implements PasswordHasherInterface
     {
         return Password::create(
             $this->userPasswordHasher->hashPassword(
-                new class() implements PasswordAuthenticatedUserInterface {
+                new class () implements PasswordAuthenticatedUserInterface {
                     public function getPassword(): ?string
                     {
                         return null;

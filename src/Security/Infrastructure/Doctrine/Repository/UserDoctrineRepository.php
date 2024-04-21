@@ -19,7 +19,8 @@ use Symfony\Component\Security\Core\Exception\UserNotFoundException;
  */
 final class UserDoctrineRepository extends ServiceEntityRepository implements UserRepository
 {
-    public function __construct(ManagerRegistry $registry) {
+    public function __construct(ManagerRegistry $registry)
+    {
         parent::__construct($registry, DoctrineUser::class);
     }
 
